@@ -1,0 +1,20 @@
+#!/usr/bin/ruby
+ 
+# Dropzone Destination Info
+# Name: MD > Textile
+# Description: Converts Markdown to Textile
+# Handles: NSFilenamesPboardType
+# Events: Dragged
+# Creator: Brad Sukala
+# URL: http://sukala.net
+# IconURL: https://dl.dropbox.com/u/452006/MDtoTextile.png
+ 
+def dragged
+
+$items.each {|file_path| basename = File.basename(file_path, '.*')
+
+# Modify the path below before #{basename} to control where the converted file appears. Be sure to replace YOURUSERNAME with your actual user name.
+# Removing the path entirely (leaving only #{basename}.textile) will cause the converted file to appear in the same directory as the source (Markdown) file.
+system("/usr/local/bin/pandoc '#{file_path}' -o '/Users/YOURUSERNAME/Desktop/#{basename}.textile'")}
+
+end
